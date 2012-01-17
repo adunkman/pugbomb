@@ -1,6 +1,7 @@
 var pugs = require('./pugs'),
     express = require('express'),
-    app = express.createServer();
+    app = express.createServer(),
+    port = process.env.PORT || 3000;
 
 app.configure(function () {
    app.set('view engine', 'jade');
@@ -16,4 +17,5 @@ app.get('/', function (request, response) {
    });
 });
 
-app.listen(3000);
+app.listen(port);
+console.log("PUGBOMB LISTENING ON PORT " + port);
