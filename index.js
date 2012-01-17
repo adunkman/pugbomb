@@ -4,18 +4,22 @@ var pugs = require('./pugs'),
     port = process.env.PORT || 3000;
 
 app.configure(function () {
-   app.set('view engine', 'jade');
+  app.set('view engine', 'jade');
 });
 
 app.get('/', function (request, response) {
-   pugs.get(1, function (error, pugs) {
-      if (error) next(error);
+  pugs.get(1, function (error, pug) {
+    if (error) next(error);
+    response.render('photo', { pug: pug });
+  });
+});
 
-      response.render('index', {
-         pugs: pugs
-      });
-   });
+app.get('/:server/:tumblrId', function (request, response) {
+  pugs.get(request.params.server, request.params.tumblrId, function (error, pug) {
+    if (error) next(error);
+    response.render('photo', { pug: pug });
+  });
 });
 
 app.listen(port);
-console.log("PUGBOMB LISTENING ON PORT " + port);
+console.log("pugbomb.me listening on port " + port);
