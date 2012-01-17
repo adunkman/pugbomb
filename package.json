@@ -1,0 +1,17 @@
+{
+  "author": "",
+  "name": "pugbomb",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~v0.4.7"
+  },
+  "dependencies": {
+    "express": "~v2.5.6",
+    "restler": "~v0.2.5",
+    "jade": "~v0.20.0"
+  },
+  "devDependencies": {}
+}
