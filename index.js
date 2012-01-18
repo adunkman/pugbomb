@@ -1,25 +1,20 @@
-var pugs = require('./pugs'),
+var stylus = require('stylus'),
     express = require('express'),
+    path = require('path'),
+    pugstore = require('./store/pug'),
+    view = require('./view')
     app = express.createServer(),
     port = process.env.PORT || 3000;
 
 app.configure(function () {
   app.set('view engine', 'jade');
+  app.use(stylus.middleware({ src: path.join(__dirname, 'public') }));
+  app.use(express.static(path.join(__dirname, '/public')));
 });
 
-app.get('/', function (request, response) {
-  pugs.get(1, function (error, pug) {
-    if (error) next(error);
-    response.render('photo', { pug: pug });
-  });
-});
-
-app.get('/:server/:tumblrId', function (request, response) {
-  pugs.get(request.params.server, request.params.tumblrId, function (error, pug) {
-    if (error) next(error);
-    response.render('photo', { pug: pug });
-  });
-});
+app.get('/', pugstore.find(1), view.photo);
+app.get('/:server/:key', pugstore.findByName('server', 'key'), view.photo);
 
 app.listen(port);
-console.log("pugbomb.me listening on port " + port);
+
+console.log("Listening on port " + port);

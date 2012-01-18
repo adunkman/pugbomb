@@ -1,0 +1,62 @@
+html {
+  background: #2d2d2d url("images/background.png");
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.30) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0,0,0,0.00)), color-stop(100%, rgba(0,0,0,0.30)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.30) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.30) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.30) 100%);
+  background: radial-gradient(center, ellipse cover, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.30) 100%);
+}
+.kennel {
+  width: 100%;
+  height: 100%;
+}
+.pug {
+  display: inline-block;
+  position: relative;
+}
+.pug img {
+  float: left;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.10) url("images/loading.gif") no-repeat center center;
+  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.50);
+  -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.50);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.50);
+  min-height: 50px;
+  min-width: 50px;
+}
+.pug .sunglasses {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid rgba(255,255,255,0.20);
+  border-left: 1px solid rgba(255,255,255,0.20);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.pug .cool-hat {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid rgba(0,0,0,0.20);
+  border-right: 1px solid rgba(0,0,0,0.20);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}

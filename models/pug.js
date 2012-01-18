@@ -1,26 +1,16 @@
-var Pug = function () {
-   if (arguments.length == 1) {
-     this.constructFromUrl.apply(this, arguments);
-   }
-   if (arguments.length == 2) {
-     this.constructFromParts.apply(this, arguments);
-   }
+var Pug = function (remoteUrl) {
+   this.img = remoteUrl;
+   this.url = Pug.getLocalUrl(remoteUrl);
 };
 
-Pug.prototype.constructFromUrl = function(tumblrUrl) {
-   this.img = tumblrUrl;
-   this.url = makeLocalUrl(tumblrUrl);
+Pug.getRemoteUrl = function (server, key) {
+  return 'http://' + server + '.media.tumblr.com/tumblr_' + key + '_500.jpg';
 };
 
-Pug.prototype.constructFromParts = function(server, tumblrId) {
-   var tumblrUrl = 'http://' + server + '.media.tumblr.com/tumblr_' + tumblrId + '_500.jpg';
-   this.constructFromUrl(tumblrUrl);
-};
-
-var makeLocalUrl = function (tumblrUrl) {
-   var server = tumblrUrl.match(/\d+/);
-   var tumblrId = tumblrUrl.match(/tumblr_([^_]+)/i)[1];
-   return '/' + server + '/' + tumblrId;
+Pug.getLocalUrl = function (remoteUrl) {
+  var server = remoteUrl.match(/\d+/);
+  var key = remoteUrl.match(/tumblr_([^_]+)/i)[1];
+  return '/' + server + '/' + key;
 };
 
 module.exports = Pug;
