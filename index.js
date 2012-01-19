@@ -24,8 +24,13 @@ app.configure('production', function () {
   app.use(express.errorHandler());
 });
 
-app.get('/', pugstore.find(1), view.photo);
-app.get('/:server/:key', pugstore.findByName('server', 'key'), view.photo);
+app.get('/',
+  pugstore.find(1),
+  view.photo);
+
+app.get('/:server/:size/:key.:format',
+  pugstore.findByName('server', 'key', 'size', 'format'),
+  view.photo);
 
 app.listen(port);
 

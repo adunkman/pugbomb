@@ -26,9 +26,10 @@ module.exports = {
     };
   },
 
-  findByName: function (server, key) {
+  findByName: function (server, key, size, format) {
     return function (request, response, next) {
-      var data = Pug.getRemoteUrl(request.params[server], request.params[key]);
+      var data = Pug.getRemoteUrl(request.params[server], request.params[key],
+        request.params[size], request.params[format]);
 
       response.data = {
         pug: new Pug(data)
