@@ -3,26 +3,25 @@ var stylus = require('stylus'),
     path = require('path'),
     pugstore = require('./store/pug'),
     view = require('./view')
-    app = express.createServer(),
-    port = process.env.PORT || 3000;
+    app = express(),
+    port = process.env.PORT || 3000,
+    errorHandler = require('errorhandler');
 
-app.configure(function () {
-  app.set('view engine', 'jade');
-});
+app.set('view engine', 'jade');
 
-app.configure('development', function () {
+if ('development' == app.get('env')) {
   app.use(stylus.middleware({ src: path.join(__dirname, 'public') }));
   app.use(express.static(path.join(__dirname, '/public')));
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+  app.use(errorHandler({ dumpExceptions: true, showStack: true }));
+}
 
-app.configure('production', function () {
+if ('production' == app.get('env')) {
   var oneYear = 31557600000;
 
   app.use(stylus.middleware({ src: path.join(__dirname, 'public'), compress: true }));
   app.use(express.static(path.join(__dirname, '/public'), { maxAge: oneYear }));
   app.use(express.errorHandler());
-});
+}
 
 app.get('/',
   pugstore.find(1),

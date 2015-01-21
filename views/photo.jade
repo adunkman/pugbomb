@@ -1,14 +1,17 @@
-table.kennel
-  tr
-    td
-      .pug
-        img(src = pug.img, alt = 'here be pugs')
-        .sunglasses
-        a.cool-hat(href = '/', title = 'Moar pugs plz!')
-      .permapug
-        a(href = pug.url) Link to this pug
-        p.footer a dumb idea of
-          a(href = "http://twitter.com/adunkman") @adunkman
-          | &bull;
-          a(href = "https://github.com/adunkman/pugbomb") fork the source
-          | on github
+extends layout
+
+block content
+  table.kennel
+    tr
+      td
+        .pug
+          img(src = pug.img, alt = 'here be pugs')
+          .sunglasses
+          a.cool-hat(href = '/', title = 'Moar pugs plz!')
+        .permapug
+          a(href = pug.url) Link to this pug
+          p.footer a dumb idea of
+            a(href = "http://twitter.com/adunkman") @adunkman
+            | &bull;
+            a(href = "https://github.com/adunkman/pugbomb") fork the source
+            | on github
