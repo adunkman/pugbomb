@@ -16,9 +16,12 @@ module.exports = {
     return function (request, response, next) {
       pugme.random(function (error, data) {
         if (error) next(error);
-
+        
+        var matchFirstURL = data.match(/http:[^"]+/),
+            firstURL = matchFirstURL && matchFirstURL[0];
+        
         response.data = {
-          pug: new Pug(data)
+          pug: new Pug(firstURL)
         };
 
         next();
