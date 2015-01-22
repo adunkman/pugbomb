@@ -20,7 +20,7 @@ if ('production' == app.get('env')) {
 
   app.use(stylus.middleware({ src: path.join(__dirname, 'public'), compress: true }));
   app.use(express.static(path.join(__dirname, '/public'), { maxAge: oneYear }));
-  app.use(express.errorHandler());
+  app.use(errorHandler());
 }
 
 app.get('/',
