@@ -12,8 +12,8 @@
     "errorhandler": "^1.3.2",
     "express": "^4.11.1",
     "jade": "^1.9.1",
-    "restler": "~v0.2.5",
-    "stylus": "~v0.22.5"
+    "restler": "^3.2.2",
+    "stylus": "^0.49.3"
   },
   "devDependencies": {}
 }
