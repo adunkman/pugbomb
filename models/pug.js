@@ -20,7 +20,7 @@ Pug.getLocalUrl = function (remoteUrl) {
       size = parsed[4],
       format = parsed[5];
 
-  return util.format('%s/%s%s/%s/%s', server, (directory ? directory + '/' : ''), size, key, format);
+  return util.format('/%s/%s%s/%s.%s', server, (directory ? directory + '/' : ''), size, key, format);
 };
 
 module.exports = Pug;
