@@ -28,7 +28,11 @@ app.get('/',
   view.photo);
 
 app.get('/:server/:size/:key.:format',
-  pugstore.findByName('server', 'key', 'size', 'format'),
+  pugstore.findByName('server', '', 'key', 'size', 'format'),
+  view.photo);
+
+app.get('/:server/:directory/:size/:key.:format',
+  pugstore.findByName('server', 'directory', 'key', 'size', 'format'),
   view.photo);
 
 app.listen(port);
