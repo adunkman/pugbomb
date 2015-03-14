@@ -16,9 +16,12 @@ module.exports = {
     return function (request, response, next) {
       pugme.random(function (error, data) {
         if (error) next(error);
-
+        
+        var matchFirstURL = data.match(/http:[^"]+/),
+            firstURL = matchFirstURL && matchFirstURL[0];
+        
         response.data = {
-          pug: new Pug(data)
+          pug: new Pug(firstURL)
         };
 
         next();
@@ -26,9 +29,9 @@ module.exports = {
     };
   },
 
-  findByName: function (server, key, size, format) {
+  findByName: function (server, directory, key, size, format) {
     return function (request, response, next) {
-      var data = Pug.getRemoteUrl(request.params[server], request.params[key],
+      var data = Pug.getRemoteUrl(request.params[server], request.params[directory], request.params[key],
         request.params[size], request.params[format]);
 
       response.data = {
